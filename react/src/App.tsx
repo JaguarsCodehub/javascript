@@ -2,7 +2,7 @@
 // import Counter from "./components/Counter";
 // import ControlledForm from "./components/ControlledForm";
 // import ToggleButton from "./components/ToggleButton";
-// import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoList";
 // import PostFetcher from "./components/PostFetcher";
 // import SearchList from "./components/DebouncedSearch";
 
@@ -14,7 +14,7 @@ function App() {
         {/* <Counter/> */}
         {/* <ControlledForm /> */}
         {/* <ToggleButton /> */}
-        {/* <TodoList /> */}
+        <TodoList />
         {/* <PostFetcher /> */}
         {/* <SearchList /> <- Important */}
       </div>

@@ -8,6 +8,25 @@ const PostFetcher = () => {
 
     const [data, setData] = useState<Post[]>([])
     const [loading, setLoading] = useState<boolean>(false)
+    const [input, setInput] = useState('')
+    const [page, setPage] = useState(1)
+
+    const filteredPosts = data.filter(post => (
+        post.title.toLowerCase().includes(input.toLowerCase())
+    ))
+
+    const postsPerPage = 10;
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+    const paginatedPosts = filteredPosts.slice((page - 1) * postsPerPage, page * postsPerPage)
+
+    const handleNext = () => {
+        if (page < totalPages) setPage(prev => prev + 1)
+    }
+
+    const handlePrev = () => {
+        if (page > 1) setPage(prev => prev - 1)
+    }
 
     const fetchData = async () => {
         try {
@@ -25,7 +44,7 @@ const PostFetcher = () => {
         setTimeout(() => {
             setLoading(true)
             fetchData();
-        }, 3000)
+        }, 500)
     }, [])
     return (
 
@@ -35,11 +54,14 @@ const PostFetcher = () => {
                 {/* Render fetched posts here */}
                 {loading && <p className="text-black">Loading posts...</p>}
 
-                {data && data.map((post, index) => (
+                <input type="text" placeholder='Search for Titles' value={input} onChange={(e) => setInput(e.target.value)}/>
+                {paginatedPosts && paginatedPosts.map((post, index) => (
                     <li key={index}>
                         {post.title}
                     </li>
                 ))}
+                <button onClick={handleNext}>Next</button>
+                <button onCanPlay={handlePrev}>Previous</button>
             </ul>
         </div>
     )
