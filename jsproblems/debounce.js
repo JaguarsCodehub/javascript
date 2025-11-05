@@ -1,19 +1,32 @@
+// function debounce(func, delay) {
+//     let timeoutId;
+    
+//     return function (...args) {
+//         const context = this;
+        
+//         // Clear any existing timeout
+//         clearTimeout(timeoutId);
+        
+//         // Set new timeout
+//         timeoutId = setTimeout(() => {
+//             func.apply(context, args);
+//         }, delay);
+//     }
+// }
+
 function debounce(func, delay) {
     let timeoutId;
-    
-    return function (...args) {
+
+    return function () {
         const context = this;
-        
-        // Clear any existing timeout
-        clearTimeout(timeoutId);
-        
-        // Set new timeout
+        clearTimeout(timeoutId)
+
         timeoutId = setTimeout(() => {
-            func.apply(context, args);
-        }, delay);
+            func.apply(context, this)
+        }, delay)
     }
 }
 
-function inputHandler(event) {
-    console.log('Input value:', event.target.value);
-}
+// function inputHandler(event) {
+//     console.log('Input value:', event.target.value);
+// }

@@ -1,11 +1,21 @@
-function reverseString (str) {
-    let reversedStr = ''
+// function reverseString (str) {
+//     let reversedStr = ''
 
-    for (let i = str.length - 1; i >= 0; i--) {
+//     for (let i = str.length - 1; i >= 0; i--) {
+//         reversedStr += str[i]
+//     }
+
+//     return reversedStr
+// }
+
+// console.log(reverseString('hello')) // Output: 'olleh'
+
+function reverseString(str) {
+    let reversedStr = ""
+    for (let i = str.length - 1; i >= 0; i--){
         reversedStr += str[i]
     }
 
     return reversedStr
 }
-
-console.log(reverseString('hello')) // Output: 'olleh'
+console.log(reverseString("HELLO"))
